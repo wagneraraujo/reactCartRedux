@@ -12,7 +12,10 @@ export default (state = initialState, action) => {
         return item;
       });
     case "REMOVE_FROM_CART":
-      return state;
+      return state.map(item => {
+        item.id === action.id && item.qtd--;
+        return item;
+      });
     case "CLEAR_CART":
       return state;
     default:

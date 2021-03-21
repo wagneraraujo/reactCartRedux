@@ -1,10 +1,19 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 export default function ShoppingCart() {
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector(state =>
+    state.cart.filter(item => {
+      return item.qtd > 0;
+    })
+  );
+  const dispatch = useDispatch();
+  const totalQtd = useSelector(state =>
+    state.cart.reduce((acc, cur) => acc + cur.qtd, 0)
+  );
+
   return (
     <div className="cart">
       <div className="">
-        <h3>Carrinho</h3>
+        <h3>Carrinho - Qtd: {totalQtd}</h3>
       </div>
       <div className="">
         <table className="table">
@@ -19,8 +28,23 @@ export default function ShoppingCart() {
             {cart.map(item => (
               <tr key={item.id}>
                 <td>{item.name}</td>
-                <td>{item.price}</td>
-                <td>{item.qtd}</td>
+                <td>R$ {item.price.toFixed(2) * item.qtd}</td>
+                <td className="td-space">
+                  <button
+                    onClick={() => dispatch({ type: "ADD_CART", id: item.id })}
+                  >
+                    +
+                  </button>
+                  {item.qtd}
+                  <button
+                    className="danger"
+                    onClick={() =>
+                      dispatch({ type: "REMOVE_FROM_CART", id: item.id })
+                    }
+                  >
+                    -
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

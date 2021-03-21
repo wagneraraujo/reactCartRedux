@@ -12,7 +12,7 @@ export default function Produtcts() {
               <img src={item.image} alt="" />
             </div>
             <h6>{item.name}</h6>
-            <h4>R$ {item.price}</h4>
+            <h4>R$ {item.price.toFixed(2)}</h4>
             <div>
               <button
                 onClick={() => dispatch({ type: "ADD_CART", id: item.id })}

@@ -17,7 +17,10 @@ export default (state = initialState, action) => {
         return item;
       });
     case "CLEAR_CART":
-      return state;
+      return state.map(item => {
+        item.qtd = 0;
+        return item;
+      });
     default:
       return state;
   }

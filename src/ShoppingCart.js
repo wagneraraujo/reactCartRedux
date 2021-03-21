@@ -18,6 +18,11 @@ export default function ShoppingCart() {
     <div className="cart">
       <div className="">
         <h3>Carrinho - Qtd: {totalQtd}</h3>
+        <div>
+          <button onClick={() => dispatch({ type: "CLEAR_CART" })}>
+            Limpar Carrinho
+          </button>
+        </div>
       </div>
       <div className="">
         <table className="table">
@@ -32,7 +37,7 @@ export default function ShoppingCart() {
             {cart.map(item => (
               <tr key={item.id}>
                 <td>{item.name}</td>
-                <td>R$ {item.price.toFixed(2) * item.qtd}</td>
+                <td>R$ {item.price * item.qtd.toFixed(2)}</td>
                 <td className="td-space">
                   <button
                     onClick={() => dispatch({ type: "ADD_CART", id: item.id })}
@@ -53,7 +58,7 @@ export default function ShoppingCart() {
             ))}
             <tr>
               <td>Preço total</td>
-              <td>{totalPrice}</td>
+              <td>{totalPrice.toFixed(2)}</td>
             </tr>
           </tbody>
         </table>

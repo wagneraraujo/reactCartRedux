@@ -10,6 +10,10 @@ export default function ShoppingCart() {
     state.cart.reduce((acc, cur) => acc + cur.qtd, 0)
   );
 
+  const totalPrice = useSelector(state =>
+    state.cart.reduce((acc, cur) => acc + cur.price * cur.qtd, 0)
+  );
+
   return (
     <div className="cart">
       <div className="">
@@ -47,6 +51,10 @@ export default function ShoppingCart() {
                 </td>
               </tr>
             ))}
+            <tr>
+              <td>Preço total</td>
+              <td>{totalPrice}</td>
+            </tr>
           </tbody>
         </table>
       </div>

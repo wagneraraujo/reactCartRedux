@@ -5,7 +5,7 @@ import ShoppingCart from "./ShoppingCart";
 import store from "./redux/store";
 import "./styles/style.css";
 import { Provider } from "react-redux";
-console.log(store.getState());
+// console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <div className="row">

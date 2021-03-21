@@ -199,3 +199,16 @@ button:hover {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.table {
+  width: 100%;
+  margin-top: 30px;
+}
+.table thead {
+  background-color: #191919;
+  color: #fff;
+  width: 100%;
+}
+.table td {
+  padding: 7px;
+  border-bottom: 1px solid #fff;
+}

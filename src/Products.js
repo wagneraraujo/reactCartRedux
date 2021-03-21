@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Produtcts() {
+  const dispatch = useDispatch();
   const products = useSelector(state => state.products);
   return (
     <div className="products">
@@ -13,7 +14,11 @@ export default function Produtcts() {
             <h6>{item.name}</h6>
             <h4>R$ {item.price}</h4>
             <div>
-              <button>Add Carrinho</button>
+              <button
+                onClick={() => dispatch({ type: "ADD_CART", id: item.id })}
+              >
+                Add Carrinho
+              </button>
             </div>
           </div>
         ))}

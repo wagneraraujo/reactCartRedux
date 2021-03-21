@@ -7,7 +7,10 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case "ADD_CART":
-      return state;
+      return state.map(item => {
+        item.id === action.id && item.qtd++;
+        return item;
+      });
     case "REMOVE_FROM_CART":
       return state;
     case "CLEAR_CART":
